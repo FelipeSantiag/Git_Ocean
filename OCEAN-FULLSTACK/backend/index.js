@@ -1,7 +1,8 @@
 const express = require('express')
 const { MongoClient } = require("mongodb");
 
-const url = "mongodb+srv://admin:LdQHrR3iAM9u4Mtw@cluster0.ih1f4.mongodb.net";
+const url = "mongodb+srv://admin:ZMVGJ7Nc6KwTeT5T@cluster0.jiswbtv.mongodb.net/";
+//const url = "mongodb+srv://admin:LdQHrR3iAM9u4Mtw@cluster0.ih1f4.mongodb.net"; //link db aula
 
 const dbName = "jornada-fullstack-agosto-22-Santiago";
 
@@ -15,14 +16,14 @@ async function main(){
 //Para isso utilizei Async/Await
 
 console.log("Conectando com o DBase...")
-  /*
+
   const client = await MongoClient.connect(url);
   const db = client.db(dbName);
   const collection = db.collection("pontuacoes");
-  */
-console.log("Conectado com sucesso com o DBase.")
-const app = express();
 
+console.log("Conectado com sucesso com o DBase.")
+
+const app = express();
 
 //Sinalizando para o express  o uso do 
 //JSON no body das requisições
