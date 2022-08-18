@@ -1,1 +1,1 @@
-web: npm start --prefix backend
+web: npm start --prefix Git_Ocean/OCEAN-FULLSTACK/backend
