@@ -15,12 +15,14 @@ async function main(){
 //Para isso utilizei Async/Await
 
 console.log("Conectando com o DBase...")
+  /*
   const client = await MongoClient.connect(url);
   const db = client.db(dbName);
   const collection = db.collection("pontuacoes");
-
-  const app = express();
+  */
 console.log("Conectado com sucesso com o DBase.")
+const app = express();
+
 
 //Sinalizando para o express  o uso do 
 //JSON no body das requisições
