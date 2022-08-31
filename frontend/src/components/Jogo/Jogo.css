@@ -46,6 +46,24 @@
     left: 50px;
 }
 
+.mario-pulo{
+    animation: mario-pulo 0.7s;
+}
+
+@keyframes mario-pulo {
+    from{
+        right: -50px;
+    }
+
+    50%{
+        bottom: 150px;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+
 .chao{
     background: limegreen;
     height: 30px;
