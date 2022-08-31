@@ -1,4 +1,3 @@
-
 import "./Jogo.css";
 import nuvens from "../../assets/clouds.png";
 import cano from "../../assets/pipe.png";
@@ -40,15 +39,15 @@ function Jogo(props) {
         function () {
   // Implementação temporária para exibir se o mário está no cano
   // ou não
-  const interval = setInterval(function () {
+            const interval = setInterval(function () {
     // Pegamos o valor que determinar se o Mario
     // está no cano ou não
-    const estaNoCano = MarioEstaNoCano();
+            const estaNoCano = MarioEstaNoCano();
 
         // Se o Mario não estiver no cano, encerramos a função com `return`
-        if (!estaNoCano || estaMorto) {
-            return;
-          }
+            if (!estaNoCano || estaMorto) {
+                return;
+            }
       
           // Caso esteja no cano, atualizamos o estado
           // `estaMorto` para `true`
