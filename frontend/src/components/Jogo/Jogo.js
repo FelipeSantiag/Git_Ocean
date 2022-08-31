@@ -59,14 +59,25 @@ function Jogo() {
         */
        // Salvar a pontuação
   setInterval(function () {
-    if (estaMorto) {
-      return;
-    }
+     // UseEffect
+  useEffect(
+    function () {
+      // Salvar a pontuação
+      const interval = setInterval(function () {
+        if (estaMorto) {
+          return;
+        }
 
     setPontos(pontos + 1);
 
     console.log({ pontos });
   }, 500);
+    return () => clearInterval(interval);
+    },
+    [estaMorto, pontos]
+  );
+
+
 
     document.onkeydown = function () {
         //console.log("On key Down");
