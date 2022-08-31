@@ -15,6 +15,7 @@ function Jogo() {
   //
     const [estaPulando, setEstaPulando] = useState(false);
     const [estaMorto, setEstaMorto] = useState(false);
+    const [pontos, setPontos] = useState(0);
 
     //Criamos as referencias para 'mario' e 'cano'
     const marioRef = useRef();
@@ -56,6 +57,16 @@ function Jogo() {
         - Pausar animações
         - Salvar a pontuação
         */
+       // Salvar a pontuação
+  setInterval(function () {
+    if (estaMorto) {
+      return;
+    }
+
+    setPontos(pontos + 1);
+
+    console.log({ pontos });
+  }, 500);
 
     document.onkeydown = function () {
         //console.log("On key Down");
@@ -75,6 +86,9 @@ function Jogo() {
     if(estaPulando){
         marioClassName = "mario mario-pulo";
     }
+     
+    // Outra forma de simplificar, usando ternário
+  // const marioClassName = "mario " + (estaPulando ? "mario-pulo" : "");
   // No lugar de declarar uma variável e mudar o valor dela em um caso de `if`,
   // como fizemos com o className do Mario, podemos criar uma variável
   // com dois valores, um para caso a condição seja verdadeira, outro para

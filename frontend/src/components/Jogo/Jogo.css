@@ -28,6 +28,10 @@
 */
 }
 
+.parar-animacao {
+    animation-play-state: paused;
+  }  
+
 @keyframes mover-direita-para-esquerda {
     from{
         right: -50px;
