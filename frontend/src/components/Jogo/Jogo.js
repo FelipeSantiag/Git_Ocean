@@ -58,7 +58,8 @@ function Jogo() {
         - Salvar a pontuação
         */
        // Salvar a pontuação
-  setInterval(function () {
+  //setInterval(function () {
+
      // UseEffect
   useEffect(
     function () {
@@ -70,14 +71,17 @@ function Jogo() {
 
     setPontos(pontos + 1);
 
-    console.log({ pontos });
+    //console.log({ pontos });
   }, 500);
     return () => clearInterval(interval);
     },
     [estaMorto, pontos]
   );
 
-
+  /*
+  - Exibir pontos em tempo real (DESAFIO)
+  - Quando der GameOver, exibir o HighScore
+  */
 
     document.onkeydown = function () {
         //console.log("On key Down");
@@ -110,14 +114,21 @@ function Jogo() {
     
     return (
         <div className="jogo">
+            <div> Pontos: {pontos}</div>
+
             <img className ="nuvens" src={nuvens} alt="Nuvens"/>
 
-            <img ref={canoRef} className="cano" src={cano} alt="Cano" />
             <img
-        ref={marioRef}
-        className={marioClassName}
-        src={marioImage}
-        alt="Mário"
+            ref={canoRef}
+            className={"cano " + pararAnimacao}
+            src={cano}
+            alt="Cano"
+      />
+            <img
+            ref={marioRef}
+            className={marioClassName}
+            src={marioImage}
+            alt="Mário"
         />
 
             <div className="chao"></div>
