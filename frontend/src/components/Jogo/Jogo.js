@@ -14,6 +14,7 @@ function Jogo() {
   // Segundo valor é para atualizar o estado
   //
     const [estaPulando, setEstaPulando] = useState(false);
+    const [estaMorto, setEstaMorto] = useState(false);
 
     //Criamos as referencias para 'mario' e 'cano'
     const marioRef = useRef();
@@ -32,6 +33,29 @@ function Jogo() {
         mario.offsetTop + mario.offsetHeight > cano.offsetTop
         )
     };
+  // Implementação temporária para exibir se o mário está no cano
+  // ou não
+  setInterval(function () {
+    // Pegamos o valor que determinar se o Mario
+    // está no cano ou não
+    const estaNoCano = marioEstaNoCano();
+
+        // Se o Mario não estiver no cano, encerramos a função com `return`
+        if (!estaNoCano) {
+            return;
+          }
+      
+          // Caso esteja no cano, atualizamos o estado
+          // `estaMorto` para `true`
+          setEstaMorto(true);
+        }, 100);
+      
+        /*
+        Quando estiver morto:
+        - Mudar a imagem do Mario
+        - Pausar animações
+        - Salvar a pontuação
+        */
 
     document.onkeydown = function () {
         //console.log("On key Down");
@@ -44,14 +68,19 @@ function Jogo() {
             setEstaPulando(false);
         }, 700)
     }
-    //Por padrão esse element tem 
+    //Por padrão esse element tem a classe `.mario`
     let marioClassName = "mario";
-
+    // Caso esteja pulando (valor true), a classe será `.mario`
+   // e `.mario-pulo`
     if(estaPulando){
         marioClassName = "mario mario-pulo";
     }
-
-    console.log(20, { estaPulando })
+  // No lugar de declarar uma variável e mudar o valor dela em um caso de `if`,
+  // como fizemos com o className do Mario, podemos criar uma variável
+  // com dois valores, um para caso a condição seja verdadeira, outro para
+  // caso a condição seja false
+  // Esse é o Operador Ternário!
+  const marioImage = estaMorto ? gameOver : mario;
 
     
     return (
@@ -59,7 +88,12 @@ function Jogo() {
             <img className ="nuvens" src={nuvens} alt="Nuvens"/>
 
             <img ref={canoRef} className="cano" src={cano} alt="Cano" />
-            <img ref={marioRef} className={marioClassName} src={mario} alt="Mário" />
+            <img
+        ref={marioRef}
+        className={marioClassName}
+        src={marioImage}
+        alt="Mário"
+        />
 
             <div className="chao"></div>
         </div>
