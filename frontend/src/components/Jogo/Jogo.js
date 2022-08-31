@@ -1,4 +1,5 @@
 
+import "./Jogo.css";
 import nuvens from "../../assets/clouds.png";
 import cano from "../../assets/pipe.png";
 import mario from "../../assets/mario.gif";
@@ -34,15 +35,18 @@ function Jogo(props) {
         mario.offsetTop + mario.offsetHeight > cano.offsetTop
         )
     };
+    useEffect(
+        // Effect
+        function () {
   // Implementação temporária para exibir se o mário está no cano
   // ou não
-  setInterval(function () {
+  const interval = setInterval(function () {
     // Pegamos o valor que determinar se o Mario
     // está no cano ou não
-    const estaNoCano = marioEstaNoCano();
+    const estaNoCano = MarioEstaNoCano();
 
         // Se o Mario não estiver no cano, encerramos a função com `return`
-        if (!estaNoCano) {
+        if (!estaNoCano || estaMorto) {
             return;
           }
       
@@ -52,6 +56,11 @@ function Jogo(props) {
           props.onMorrer();
         }, 100);
       
+        // (Opcional) Return mecanismo que desfaz o Effect anterior
+      return () => clearInterval(interval);
+    },
+    [estaMorto]
+  );
         /*
         Quando estiver morto:
         - Mudar a imagem do Mario
@@ -111,7 +120,7 @@ function Jogo(props) {
   // caso a condição seja false
   // Esse é o Operador Ternário!
   const marioImage = estaMorto ? gameOver : mario;
-
+  const pararAnimacao = estaMorto ? "parar-animacao" : "";
     
     return (
         <div className="jogo">
