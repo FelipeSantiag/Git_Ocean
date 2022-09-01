@@ -52,13 +52,13 @@ function Jogo(props) {
           // Caso esteja no cano, atualizamos o estado
           // `estaMorto` para `true`
           setEstaMorto(true);
-          props.onMorrer();
+          props.onMorrer(pontos);
         }, 100);
       
         // (Opcional) Return mecanismo que desfaz o Effect anterior
       return () => clearInterval(interval);
     },
-    [estaMorto]
+    [estaMorto, props]
   );
         /*
         Quando estiver morto:
@@ -79,12 +79,13 @@ function Jogo(props) {
         }
 
     setPontos(pontos + 1);
-
+    props.onPontos(pontos + 1);
     //console.log({ pontos });
   }, 500);
     return () => clearInterval(interval);
     },
-    [estaMorto, pontos]
+    //Lista de dependências
+    [estaMorto, pontos, props]
   );
 
   /*
